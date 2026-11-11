@@ -1,43 +1,34 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Simon</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simon Game</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <h1 id="level-title">Press A Key to Start</h1>
-  <div class="container">
-    <div lass="row">
-
-      <div type="button" id="green" class="btn green">
-
+  <div class="game-container">
+    <header>
+      <h1>SIMON</h1>
+      <div class="scores">
+        <p>Level: <span id="level">0</span></p>
+        <p>High Score: <span id="high-score">0</span></p>
       </div>
+    </header>
 
-      <div type="button" id="red" class="btn red">
-
+    <div class="board">
+      <div class="pad green" data-color="green"></div>
+      <div class="pad red" data-color="red"></div>
+      <div class="pad yellow" data-color="yellow"></div>
+      <div class="pad blue" data-color="blue"></div>
+      
+      <div class="center-hub">
+        <button id="start-btn">START</button>
+        <p id="status-text">Press Start</p>
       </div>
     </div>
-
-    <div class="row">
-
-      <div type="button" id="yellow" class="btn yellow">
-
-      </div>
-      <div type="button" id="blue" class="btn blue">
-
-      </div>
-
-    </div>
-
   </div>
 
-
+  <script src="script.js"></script>
 </body>
-
-<script src="index.js"></script>
-
 </html>
