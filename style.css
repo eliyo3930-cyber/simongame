@@ -1,53 +1,147 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
+  background-color: #1a1a2e;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  user-select: none;
+}
+
+.game-container {
   text-align: center;
-  background-color: #011F3F;
 }
 
-#level-title {
-  font-family: 'Press Start 2P', cursive;
-  font-size: 3rem;
-  margin:  5%;
-  color: #FEF2BF;
+header h1 {
+  font-size: 2.5rem;
+  letter-spacing: 5px;
+  margin-bottom: 10px;
 }
 
-.container {
-  display: block;
-  width: 50%;
-  margin: auto;
-
+.scores {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  color: #a2a8d3;
 }
 
-.btn {
-  margin: 25px;
-  display: inline-block;
-  height: 200px;
-  width: 200px;
-  border: 10px solid black;
-  border-radius: 20%;
+.board {
+  position: relative;
+  width: 340px;
+  height: 340px;
+  background-color: #111;
+  border-radius: 50%;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 }
 
-.game-over {
-  background-color: red;
-  opacity: 0.8;
+.pad {
+  cursor: pointer;
+  transition: filter 0.1s ease, transform 0.1s ease;
+  opacity: 0.75;
+}
+
+.pad:active {
+  transform: scale(0.98);
+}
+
+/* Pad Colors & Shapes */
+.green {
+  background-color: #00a74a;
+  border-top-left-radius: 100%;
 }
 
 .red {
-  background-color: red;
-}
-
-.green {
-  background-color: green;
-}
-
-.blue {
-  background-color: blue;
+  background-color: #9f0f17;
+  border-top-right-radius: 100%;
 }
 
 .yellow {
-  background-color: yellow;
+  background-color: #cca707;
+  border-bottom-left-radius: 100%;
 }
 
-.pressed {
-  box-shadow: 0 0 20px white;
-  background-color: grey;
+.blue {
+  background-color: #094a8f;
+  border-bottom-right-radius: 100%;
+}
+
+/* Active Flash State */
+.pad.active {
+  opacity: 1;
+  filter: brightness(1.6);
+  box-shadow: 0 0 25px currentColor;
+}
+
+.green.active { color: #00ff73; }
+.red.active { color: #ff2a36; }
+.yellow.active { color: #ffe100; }
+.blue.active { color: #1e90ff; }
+
+/* Center Circle */
+.center-hub {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 130px;
+  height: 130px;
+  background-color: #1a1a2e;
+  border: 10px solid #111;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+#start-btn {
+  background-color: #e94560;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#start-btn:hover {
+  background-color: #ff5c77;
+}
+
+#start-btn:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+#status-text {
+  font-size: 0.8rem;
+  color: #ccc;
+}
+
+/* Game Over Shake Animation */
+.shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  50% { transform: translateX(10px); }
+  75% { transform: translateX(-10px); }
 }
